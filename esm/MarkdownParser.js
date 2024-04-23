@@ -192,7 +192,7 @@ Lexer.prototype.token = function (src, top, bq) {
       src = src.substring(cap[0].length);
       this.tokens.push({
         type: 'text',
-        text: cap[1],
+        text: cap[0],
       });
       continue;
     } // blockquote
