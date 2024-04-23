@@ -1,20 +1,20 @@
-# DraftJS: import/export ContentState to and from HTML, Markdown
+# DraftJS: Import Markdown to ContentState
 
-<a href="https://travis-ci.org/sstur/draft-js-utils"><img alt="Travis Status" src="https://img.shields.io/travis/sstur/draft-js-utils/master.svg?label=travis&maxAge=43200"></a>
+This is a module for [DraftJS](https://github.com/facebook/draft-js) that will convert Markdown to editor content.
 
-This is a [monorepo](https://lernajs.io/) containing several packages related to importing and exporting content from [DraftJS](https://draftjs.org/).
+It was extracted from [React-RTE](https://react-rte.org) and placed into a separate module for more general use. Hopefully it can be helpful in your projects.
 
-* [draft-js-export-html](https://www.npmjs.com/package/draft-js-export-html)
-* [draft-js-import-html](https://www.npmjs.com/package/draft-js-import-html)
-* [draft-js-export-markdown](https://www.npmjs.com/package/draft-js-export-markdown)
-* [draft-js-import-markdown](https://www.npmjs.com/package/draft-js-import-markdown)
+## Installation
 
-Each package is located in the `packages` directory and each has it's own README.
+    npm install --save draft-js-import-markdown
 
-## Contributing
+## How to Use
 
-If you want to help out, please open an issue to discuss or just go ahead and submit a PR.
+    import {stateFromMarkdown} from 'draft-js-import-markdown';
+    let contentState = stateFromMarkdown(markdown);
+
+This project is still under development. If you want to help out, please open an issue to discuss or join us on [Slack](https://draftjs.slack.com/).
 
 ## License
 
-This software is [BSD Licensed](/LICENSE).
+This software is [ISC Licensed](/LICENSE).

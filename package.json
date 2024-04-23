@@ -1,53 +1,36 @@
 {
-  "name": "draft-js-utils-monorepo",
-  "private": true,
-  "workspaces": [
-    "packages/*"
+  "name": "draft-js-import-markdown",
+  "version": "1.4.0",
+  "description": "DraftJS: Import Markdown to ContentState",
+  "main": "lib/main.js",
+  "module": "esm/main.js",
+  "files": [
+    "lib",
+    "esm"
   ],
   "scripts": {
-    "build": "lerna run build",
-    "watch": "lerna run --parallel watch",
-    "format": "prettier-eslint --write \"packages/*/src/**/*.js\"",
-    "lint": "eslint --max-warnings 0 .",
-    "typecheck": "flow",
-    "test": "yarn lint && yarn typecheck && yarn test-src",
-    "test-src": "jest"
+    "build:cjs": "babel src --root-mode upward --out-dir lib --ignore \"_*\"",
+    "build:esm": "NODE_ENV=esm babel src --root-mode upward --out-dir esm --ignore \"_*\"",
+    "build": "yarn build:cjs && yarn build:esm",
+    "prepublishOnly": "yarn build"
   },
   "dependencies": {
-    "draft-js": "^0.11.0",
+    "draft-js-import-element": "^1.4.0",
+    "synthetic-dom": "^1.4.0"
+  },
+  "peerDependencies": {
+    "draft-js": ">=0.10.0",
     "immutable": "3.x.x"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.5.0",
-    "@babel/core": "^7.5.4",
-    "@babel/plugin-proposal-class-properties": "^7.5.0",
-    "@babel/preset-env": "^7.5.4",
-    "@babel/preset-flow": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
-    "babel-eslint": "^7.0.0",
-    "eslint": "^4.6.0",
-    "eslint-plugin-babel": "^4.1.2",
-    "eslint-plugin-flowtype": "^2.35.1",
-    "eslint-plugin-react": "^7.3.0",
-    "expect": "^1.20.1",
-    "flow-bin": "^0.104.0",
-    "jest": "^24.8.0",
-    "lerna": "^3.10.7",
-    "prettier-eslint-cli": "^4.3.0",
-    "react": "^15.1.0",
-    "react-dom": "^15.1.0"
+  "keywords": [
+    "draft-js",
+    "import-markdown"
+  ],
+  "author": "sstur@me.com",
+  "license": "ISC",
+  "repository": "https://github.com/sstur/draft-js-utils/tree/master/packages/draft-js-import-markdown",
+  "bugs": {
+    "url": "https://github.com/sstur/draft-js-utils/issues"
   },
-  "jest": {
-    "moduleNameMapper": {
-      "draft-js-import-element": "<rootDir>/packages/draft-js-import-element/src/main.js",
-      "draft-js-utils": "<rootDir>/packages/draft-js-utils/src/main.js",
-      "synthetic-dom": "<rootDir>/packages/synthetic-dom/src/main.js"
-    }
-  },
-  "prettier": {
-    "bracketSpacing": false,
-    "singleQuote": true,
-    "trailingComma": "all",
-    "arrowParens": "always"
-  }
+  "homepage": "https://github.com/sstur/draft-js-utils/blob/master/packages/draft-js-import-markdown/README.md"
 }
