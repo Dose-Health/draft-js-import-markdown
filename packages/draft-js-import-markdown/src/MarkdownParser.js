@@ -223,7 +223,8 @@ Lexer.prototype.token = function(src, top, bq) {
     if ((cap = this.rules.hr.exec(src))) {
       src = src.substring(cap[0].length);
       this.tokens.push({
-        type: 'hr',
+        type: 'text',
+        text: cap[0]
       });
       continue;
     }
